@@ -1,0 +1,10 @@
+$def with (colors)
+<h1>Barevná škála cen</h1>
+<p>Toto jsou barvy a jejich hodnoty z <a href="/mapa">mapy</a>.
+Hodnoty nad 100 000 Kč/m² jsou úplně <span style="color:red;">červené</span>.
+</p>
+$for value, rgb in colors:
+    <div class="scale" style="background-color: #$rgb;">
+    $if value:
+        $formatPrice(value) Kč/m²
+    &nbsp;</div>

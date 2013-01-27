@@ -1,0 +1,24 @@
+$def with (days, counting)
+<h1>Jaké byty se prodávají v Praze</h1>
+<table class="homes">
+    $:render.part_analysis_head()
+$for date, analyses in days:
+    <tr class="date"><td colspan="6">$formatDate(date)
+    $if isToday(date):
+        <span class="today"> - dnešní</span>
+    $elif isYesterday(date):
+        <span class="yesterday"> - včerejší</span>
+    $elif analyses:
+        - $formatAge(analyses[0]["createdDate"]) staré
+    </td></tr>
+    $for state, analysis in oddEven(analyses):
+        $:htmlAnalysisRow(analysis, rowClass=state)
+    $#
+    <tr><td colspan="6">&nbsp;</td></tr>
+$#
+</table>
+<p>
+$counting <a href="/nastaveni?path=/byty">Filtrem</a> lze omezit jaké to budou.<br/>
+Zobrazují se pouze <a href="/feedme$ctxInfo('query')"><img src="/static/img/feed.png" alt=""/></a> <a href="/feedme$ctxInfo('query')">nejnovější nabídky</a>.
+Staré, opakovaně zadané nabídky zde nezískají nové datum.
+</p>

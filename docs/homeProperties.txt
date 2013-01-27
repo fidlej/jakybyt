@@ -1,0 +1,43 @@
+
+reported properties
+===================
+url
+area
+price
+unitPrice
+floor ... could be None
+rooms
+createdDate ... real date
+geo ... latitude, longitude
+locality ... dependend locality name
+b ... building type (0=panel_building, 1=other)
+
+extra (analysed but deleted before report)
+==========================================
+title
+address
+
+properties to determine home uniqueness
+=======================================
+(without price, unitPrice, locality, createdDate)
+url
+area
+floor
+rooms
+geo
+
+//-----------------------------------------------------------------
+Example:
+{
+    'locality': u'Praha 11',
+    'url': 'http://www.sreality.cz/byty-3+kk-prodej-praha-11-chodov-1975142949',
+    'geo': (50.030453000000001, 14.518656),
+    u'price': 3000000,
+    u'area': 62,
+    u'rooms': u'3+kk',
+    u'createdDate': u'2008-04-01',
+    u'floor': 4,
+    u'unitPrice': 48387
+}
+
+

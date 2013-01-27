@@ -1,0 +1,68 @@
+$def with (dataJs1, dataJs2, lastCounts)
+<h1>Vývoj ceny bytů v Praze</h1>
+<p>
+Na grafu je <b>cena nových nabídek</b> v daném týdnu.
+</p>
+<p>
+Za poslední týden přibylo <b style="color: #4583ed;">$lastCounts[0] jednopokojových bytů</b>,
+<b style="color: #db3811;">$lastCounts[1] dvoupokojových bytů</b>
+a <b style="color: #ff9900;">$lastCounts[2] třípokojových bytů</b>.
+</p>
+
+<div class="display">
+<div id="chart_container1"></div>
+</div>
+<p>Ceny jsou v miliónech Kč.
+</p>
+<p>
+Hodnoty jsou zprůměrovány za 7 dní dozadu,
+aby v grafu nebyly zavádějící víkendové skoky.
+Předních 7 hodnot toto zprůměrování ještě ztlumí.
+<br/>
+<br/>
+</p>
+
+<h2>Počet nových nabídek</h2>
+<p>
+Na druhém grafu jsou <b>počty nových nabídek v minulých týdnech</b>.
+Barvy odpovídají <b style="color: #4583ed;">jednopokojovým</b>,
+<b style="color: #db3811;">dvoupokojovým</b>
+a <b style="color: #ff9900;">třípokojovým bytům</b>.
+
+</p>
+<div class="display">
+<div id="chart_container2"></div>
+</div>
+
+<p>
+Hodnoty v grafu jsou sečtené počty <a href="/byty">nových nabídek</a> za 7 dní dozadu.
+</p>
+
+<h3>Další grafy</h3>
+<ul>
+    <li><a href="/histogram">Počty bytů podle ceny</a></li>
+    <li><a href="/graf">Závislost ceny na velikosti bytu</a></li>
+</ul>
+
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+
+<script type="text/javascript">
+//<![CDATA[
+function getDataDefinition() {
+    var data1 = $:dataJs1;
+    var data2 = $:dataJs2;
+    return {
+        visualization: "AnnotatedTimeLine",
+        neededPackages: ["annotatedtimeline"],
+        onLoad: function() {
+            chart.drawChart(data1, "chart_container1");
+            window.setTimeout(function() {
+                chart.drawChart(data2, "chart_container2");
+            }, 1000);
+        }
+    };
+}
+//]]>
+</script>
+<script type="text/javascript" src="/static/js/chart.js"></script>
+

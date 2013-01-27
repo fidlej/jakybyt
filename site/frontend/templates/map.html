@@ -1,0 +1,30 @@
+$def with (mapKey, bounds, sight)
+<h1>Mapa cen bytů v Praze</h1>
+<p id="mapInfo">Načítám mapu ...</p>
+<noscript><p>Interaktivní mapa <b>vyžaduje zapnutý Javascript</b>.</p></noscript>
+
+<p><a href="/scale">Barva oblasti</a> odpovídá průměrné ceně za m². Nejnižší ceny jsou <span style="color:blue;">modré</span>, nejvyšší <span style="color:red;">červené</span> (<span style="color:red;">100 000 Kč/m²</span>).
+</p>
+<div id="map">
+    <img title="Mapa se načítá ..." alt="Mapa se načítá ..." id="mapPreview" src="/static/img/warm.png"/>
+</div>
+
+<script src="http://maps.google.com/maps?file=api&amp;hl=cs&amp;v=2&amp;sensor=false&amp;key=$mapKey"
+  type="text/javascript"></script>
+<script src="/static/js/mapiconmaker_packed.js" type="text/javascript"></script>
+<script type="text/javascript" src="/static/js/jquery-1.2.3.min.js"></script>
+<script type="text/javascript" src="/static/js/map.js"></script>
+
+<script type="text/javascript">
+//<![CDATA[
+function getWarmBounds() {
+    return $:jsnize(bounds);
+}
+
+$if sight:
+    function getSight() {
+        return $:jsnize(sight);
+    }
+//]]>
+</script>
+

@@ -1,0 +1,50 @@
+$def with (body, title, type)
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>$title</title>
+        <link rel="stylesheet" type="text/css" href="/static/css/style.css"/>
+        <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon"/>
+        <meta name="description" content="Mapa bytů v Praze, porovnání cen. Jen pro toho, koho nebaví hledat byt Praze."/>
+        <link rel="alternate" type="application/atom+xml" title="Byty feed" href="/feedme$ctxInfo('query')"/>
+    </head>
+<body>
+<div id="page">
+    <div id="header">
+        <a href="http://jakybyt.cz/" title="Jaký Byt"><img src="/static/img/logo.gif" width="197" height="46" alt="Jaký Byt"/></a>
+    </div>
+    <div id="content">
+        <div id="main" class="$type">
+        $:body
+        </div>
+        <div id="sub" class="$type">
+            $if "toggleFilter" in type:
+                <a id="showFilter" href="#" onclick="page.showFilter(); return false;">[+] Omezit výběr</a>
+                <a id="hideFilter" href="#" onclick="page.hideFilter(); return false;">[-] Schovat</a>
+            $if "withFilter" in type:
+                $:render.filter(ctxInfo("fullpath"))
+        </div>
+        <div id="nav">
+            <ul>
+                <li><a $:htmlLinkAttrs("/") title="Úvodní stránka">Úvod</a></li>
+                <li><a $:htmlLinkAttrs("/byty") title="Byty v Praze">Byty</a></li>
+
+                <li><a $:htmlLinkAttrs("/mapa") title="Mapa cen bytů v Praze">Mapa</a></li>
+                <li><a $:htmlLinkAttrs("/vyvoj") title="Graf cen bytů">Graf</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="footer">
+        <hr/>
+        <a href="/info">O stránkách</a>
+    </div>
+</div>
+<script src="http://www.google-analytics.com/ga.js" type="text/javascript"></script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-4380086-2");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+</body>
+</html>

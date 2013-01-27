@@ -1,0 +1,42 @@
+
+urlDiscoverer:
+    - discovers new urls
+    - stores them on disk
+    - adds them to the tobe.toDownload queue
+
+contentDownloader:
+    - gets urls from tobe.toDownload
+    - downloads them
+    - adds them to tobe.toAnalyse
+    - purges tobe.toDownload
+        => assumes nobody has changed it in the meantime
+
+batchAnalyser:
+    - gets urls from tobe.toAnalyse
+    - stores their analyses on disk
+    - adds them to tobe.toReport
+    - purges tobe.toAnalyse
+        => assumes nobody has changed it in the meantime
+
+    - gets urls from tobe.toReport
+    - merges enhances analyses into existing data/report.dat
+    - purges tobe.toReport
+        => assumes nobody has changed it in the meantime
+
+//-----------------------------------------------------------------
+Self Fixing
+===========
+purgeBrokenUrls:
+    - Gets list of all valid urls.
+    - Removes the ones not on the list.
+    - Discovers the new urls:
+        - storage.storeUrl(url)
+        - tobe.toDownload(url)
+
+contentDownloader -f:
+    - Downloads all discovered urls which are not downloaded yet.
+
+batchAnalyser -f:
+    - Renalyses all downloaded urls.
+    - Reports them into clean data/report.dat
+

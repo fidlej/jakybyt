@@ -1,0 +1,50 @@
+
+<h1>O stránkách</h1>
+<p>Cílem stránek je usnadnit mě a ostatním hledání bytu v Praze.
+Chci vidět aktuální byty na prodej, jejich cenu za m²
+a srovnání s okolím.
+</p>
+<p>
+Nebojte se mi poradit. Potěší mě, když to budou stránky užitečné.
+</p>
+<br/>
+<p>
+Ivo Danihelka<br/>
+<a href="mailto:info@jakybyt.cz" id="contact">info@jakybyt.cz</a>
+</p>
+<br/>
+<p>
+<b>Nedávná vylepšení:</b>
+</p>
+<ul class="changelog">
+    <li>22. 01. 2009<br/>
+    Přidal jsem <a href="/nastaveni">možnost Stavba=Jiná</a> pro schování paneláků (poradil Jarda).
+    </li>
+    <li>28. 08. 2008<br/>
+    Vygrafován <a href="/vyvoj">vývoj ceny bytů</a>.
+    </li>
+    <li>14. 07. 2008<br/>
+    Přidáno <a href="/nastaveni">filtrování podle lokality</a> a <a href="/feedme$ctxInfo('query')"><img src="/static/img/feed.png" alt=""/></a> <a href="/feedme$ctxInfo('query')">feed s vhodnými byty</a>.
+    </li>
+    <li>28. 06. 2008<br/>
+    Mapa: Využita knihovna <a href="http://jquery.com">jQuery</a> pro odesílání volby vhodných bytů pomocí AJAXu.
+    </li>
+    <li>08. 06. 2008<br/>
+    Graf: Použito oficiální <a href="http://code.google.com/apis/visualization/documentation/gallery.html">Google Visualization API</a>.
+    </li>
+    <li>18. 05. 2008<br/>
+    Umožněno filtrování podle parametrů.<br/>
+    Byty: Přidán odkaz na mapu.
+    </li>
+</ul>
+<br/>
+
+<script type="text/javascript">
+window.onload = function() {
+    var mail = ['z', 'c', '.', 't', 'y', 'b', 'y', 'k', 'a', 'j', '@', 'o', 'v', 'i'];
+    mail.reverse();
+    mail = mail.join('');
+    document.getElementById("contact").setAttribute("href", "mailto:" + mail);
+    document.getElementById("contact").innerHTML = mail;
+};
+</script>

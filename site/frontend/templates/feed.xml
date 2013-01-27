@@ -1,0 +1,25 @@
+$def with (analyses, mtime, url)
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title>Jaký Byt: $formatUsedFilter()</title>
+<link rel="self" href="$url"/>
+<link rel="alternate" type="text/html" href="http://jakybyt.cz/byty$ctxInfo('query')"/>
+<updated>$formatUtc(mtime)</updated>
+<author>
+<name>Jaký Byt</name>
+</author>
+<id>$url</id>
+$for analysis in analyses:
+    <entry>
+    <title type="html">$analysis["rooms"] | $formatPrice(analysis["price"]) Kč | $formatPrice(analysis["unitPrice"]) Kč/m²</title>
+    <link href="$analysis['url']"/>
+    <id>tag:jakybyt.cz,2008:/feed#byt=$urlEncode(analysis['url'])</id>
+    <updated>$analysis["createdDate"]T00:00:00Z</updated>
+    <summary type="html">
+        &lt;table&gt;
+        $render.part_analysis_head()
+        $htmlAnalysisRow(analysis, mapUrl="http://jakybyt.cz/mapa")
+        &lt;/table&gt;
+    </summary>
+    </entry>
+</feed>
+

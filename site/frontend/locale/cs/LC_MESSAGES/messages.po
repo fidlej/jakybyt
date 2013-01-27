@@ -1,0 +1,122 @@
+# Czech translations for PACKAGE package.
+# Copyright (C) 2008 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2008.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-08-28 11:12+0200\n"
+"PO-Revision-Date: 2008-04-07 16:24+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+
+#: server.py:50
+msgid "Search for preferred home in Prague"
+msgstr "Jaký byt v Praze"
+
+#: server.py:60
+#, python-format
+msgid "Showing one home."
+msgid_plural "Showing %(count)s homes."
+msgstr[0] "Zobrazen jeden byt."
+msgstr[1] "Zobrazeny %(count)s byty."
+msgstr[2] "Zobrazeno %(count)s bytů."
+
+#: server.py:62
+msgid "Latest home offers in Prague"
+msgstr "Jaké byty se prodávají v Praze"
+
+#: server.py:99
+msgid "Map of Prague homes"
+msgstr "Mapa cen bytů v Praze"
+
+#: server.py:111
+msgid "Chart of home prices in Prague"
+msgstr "Graf cen bytů v Praze"
+
+#: server.py:143
+msgid "Histogram of Prague Homes"
+msgstr "Počty bytů v Praze"
+
+#: server.py:148
+msgid "Exploratory Visualization"
+msgstr "Vývoj ceny bytů v Praze"
+
+#: server.py:153
+msgid "About the website"
+msgstr "O stránkách"
+
+#: server.py:163
+msgid "Color scale of prices"
+msgstr "Barevná škála cen"
+
+#: server.py:190
+msgid "Preferences"
+msgstr "Nastavení"
+
+#: src/viewer.py:87
+msgid "Date"
+msgstr "Datum"
+
+#: src/formatter.py:50
+msgid ","
+msgstr " "
+
+#: src/formatter.py:59
+#, python-format
+msgid "%(year)s-%(month)s-%(day)s"
+msgstr "%(day)s. %(month)s. %(year)s"
+
+#: src/formatter.py:64
+#, python-format
+msgid "%s day"
+msgid_plural "%s days"
+msgstr[0] "%s den"
+msgstr[1] "%s dny"
+msgstr[2] "%s dní"
+
+#: src/formatter.py:189
+#, python-format
+msgid "max. %s CZK"
+msgstr "max. %s Kč"
+
+#: src/formatter.py:190
+#, python-format
+msgid "max. %s CZK/m²"
+msgstr "max. %s Kč/m²"
+
+#: src/formatter.py:191
+#, python-format
+msgid "min. %s m²"
+msgstr ""
+
+#: src/formatter.py:192
+#, python-format
+msgid "min. %s floor"
+msgstr "min. %s. podlaží"
+
+#: src/formatter.py:193
+#, python-format
+msgid "max. %s days old"
+msgstr "max. %s dní staré"
+
+#: src/MapFormatter.py:33
+#, python-format
+msgid "Marked <b>one</b> <a href=\"#\">eligible home</a>, newer then %(age)s."
+msgid_plural ""
+"Marked <b>%(count)s</b> <a href=\"#\">eligible homes</a>, all newer then %"
+"(age)s."
+msgstr[0] ""
+"Vyznačen <b>jeden</b> <a href=\"#\">vhodný byt</a>, je novější než %(age)s."
+msgstr[1] ""
+"Vyznačeny <b>%(count)s</b> <a href=\"#\">vhodné byty</a>, jsou novější než %"
+"(age)s."
+msgstr[2] ""
+"Vyznačeno <b>%(count)s</b> <a href=\"#\">vhodných bytů</a>, jsou novější než "
+"%(age)s."

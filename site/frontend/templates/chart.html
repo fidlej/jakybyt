@@ -1,0 +1,45 @@
+$def with (motionDataJs)
+<h1>Graf cen bytů v Praze</h1>
+<p>Graf zobrazuje závislost ceny za m² na celkové ceně.
+Byty jsou rozděleny do koleček podle velikosti bytu (1+kk, ..., 5+1).
+</p>
+<p class="caption">
+Na grafu lze vidět dvě věci:
+</p>
+<ul>
+<li>větší byty jsou dražší (viz. růst plochy koleček s rostoucí cenou na vodorovné ose)</li>
+<li>menší byty mají vyšší cenu za m² (viz. pozice malých koleček na svislé ose)</li>
+</ul>
+
+<div class="display">
+<b>Kliknutím se zobrazí popisky koleček:</b>
+<noscript><p>Graf cen vyžaduje zapnutý Javascript a Flash.</p></noscript>
+<div id="chart_container"></div>
+</div>
+
+
+<h3>Další triky</h3>
+<ul>
+    <li>Velikost kolečka odpovídá průměrné ploše bytu.</li>
+    <li>U svislé osy je možné změnit proměnnou na Plocha. Objeví se závislost
+    obdržené čtvereční plochy na celkové ceně.</li>
+</ul>
+
+<p>V grafu jsou zprůměrovány všechny <a href="/nastaveni?path=/graf">vhodné byty</a>.
+</p>
+
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+
+<script type="text/javascript">
+//<![CDATA[
+function getDataDefinition() {
+    return {
+        visualization: "MotionChart",
+        neededPackages: ["motionchart"],
+        data: $:motionDataJs
+    };
+}
+//]]>
+</script>
+<script type="text/javascript" src="/static/js/chart.js"></script>
+

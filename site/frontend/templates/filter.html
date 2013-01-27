@@ -1,0 +1,100 @@
+$def with (path, showAdvanced=False, localityColumns=[])
+<form id="filter" method="post" action="/filter">
+    <fieldset>
+    <legend>Omezení výběru</legend>
+    <input type="hidden" name="path" value="$path"/>
+    <table class="options">
+        <tr><td>Min. podlaží:</td>
+            <td><select name="minFloor">
+        <option value="">---</option>
+        <option $:htmlOptionAttrs("minFloor", 2)>2</option>
+        <option $:htmlOptionAttrs("minFloor", 3)>3</option>
+        <option $:htmlOptionAttrs("minFloor", 4)>4</option>
+        <option $:htmlOptionAttrs("minFloor", 5)>5</option>
+        <option $:htmlOptionAttrs("minFloor", 6)>6</option>
+        <option $:htmlOptionAttrs("minFloor", 7)>7</option>
+        <option $:htmlOptionAttrs("minFloor", 8)>8</option>
+        <option $:htmlOptionAttrs("minFloor", 9)>9</option>
+        <option $:htmlOptionAttrs("minFloor", 10)>10</option>
+            </select></td></tr>
+        <tr><td>Min. plocha:</td>
+            <td><select name="minArea">
+        <option value="">---</option>
+        <option $:htmlOptionAttrs("minArea", 30)>30 m²</option>
+        <option $:htmlOptionAttrs("minArea", 40)>40 m²</option>
+        <option $:htmlOptionAttrs("minArea", 50)>50 m²</option>
+        <option $:htmlOptionAttrs("minArea", 60)>60 m²</option>
+        <option $:htmlOptionAttrs("minArea", 70)>70 m²</option>
+        <option $:htmlOptionAttrs("minArea", 80)>80 m²</option>
+        <option $:htmlOptionAttrs("minArea", 90)>90 m²</option>
+        <option $:htmlOptionAttrs("minArea", 100)>100 m²</option>
+        <option $:htmlOptionAttrs("minArea", 120)>120 m²</option>
+        <option $:htmlOptionAttrs("minArea", 140)>140 m²</option>
+        <option $:htmlOptionAttrs("minArea", 160)>160 m²</option>
+        <option $:htmlOptionAttrs("minArea", 180)>180 m²</option>
+        <option $:htmlOptionAttrs("minArea", 200)>200 m²</option>
+            </select></td></tr>
+        <tr><td>Max. cena za m²:</td>
+            <td><select name="maxUnitPrice">
+        <option value="">---</option>
+        <option $:htmlOptionAttrs("maxUnitPrice", 30000)>30 000 Kč/m²</option>
+        <option $:htmlOptionAttrs("maxUnitPrice", 40000)>40 000 Kč/m²</option>
+        <option $:htmlOptionAttrs("maxUnitPrice", 50000)>50 000 Kč/m²</option>
+        <option $:htmlOptionAttrs("maxUnitPrice", 60000)>60 000 Kč/m²</option>
+        <option $:htmlOptionAttrs("maxUnitPrice", 70000)>70 000 Kč/m²</option>
+        <option $:htmlOptionAttrs("maxUnitPrice", 80000)>80 000 Kč/m²</option>
+        <option $:htmlOptionAttrs("maxUnitPrice", 90000)>90 000 Kč/m²</option>
+        <option $:htmlOptionAttrs("maxUnitPrice", 100000)>100 000 Kč/m²</option>
+            </select></td></tr>
+        <tr><td>Max. cena:</td>
+            <td><select name="maxPrice">
+        <option value="">---</option>
+        <option $:htmlOptionAttrs("maxPrice", 1000000)>1 mil. Kč</option>
+        <option $:htmlOptionAttrs("maxPrice", 2000000)>2 mil. Kč</option>
+        <option $:htmlOptionAttrs("maxPrice", 3000000)>3 mil. Kč</option>
+        <option $:htmlOptionAttrs("maxPrice", 4000000)>4 mil. Kč</option>
+        <option $:htmlOptionAttrs("maxPrice", 5000000)>5 mil. Kč</option>
+        <option $:htmlOptionAttrs("maxPrice", 6000000)>6 mil. Kč</option>
+        <option $:htmlOptionAttrs("maxPrice", 7000000)>7 mil. Kč</option>
+        <option $:htmlOptionAttrs("maxPrice", 8000000)>8 mil. Kč</option>
+        <option $:htmlOptionAttrs("maxPrice", 9000000)>9 mil. Kč</option>
+        <option $:htmlOptionAttrs("maxPrice", 10000000)>10 mil. Kč</option>
+            </select></td></tr>
+        <tr><td>Stavba:</td>
+            <td><select name="b">
+        <option value="">---</option>
+        <option $:htmlOptionAttrs("b", 0)>Panelová</option>
+        <option $:htmlOptionAttrs("b", 1)>Jiná</option>
+            </select></td></tr>
+    </table>
+$if showAdvanced:
+    <div class="localities">
+    <b>Lokalita:</b><br/>
+    <label><input type="radio" name="local" value="0"$:htmlCheckedLoc(None)/> Celá Praha</label><br/>
+    <label><input id="local" type="radio" name="local" value="1"$:htmlCheckedLoc(-1)/> Pouze zvolené:</label>
+    <table id="localityChoices">
+    <tr>
+    $for col in localityColumns:
+        <td>
+        $for i, choice in col:
+            <label><input type="checkbox" name="loc" value="$i"$:htmlCheckedLoc(i)/> $choice</label><br/>
+        </td>
+    </tr>
+    </table>
+    </div>
+$#
+    <table class="submit">
+    <tr><td>
+    <input type="submit" value="Použít"/>
+    <span class="loading">&nbsp;...</span>
+    </td><td>
+$if not showAdvanced:
+    <div>
+    $:htmlFilteredLocalities()
+    </div>
+    <a href="/nastaveni?path=$urlEncode(path)">Pokročilejší nastavení</a>
+$#
+    </td></tr>
+    </table>
+    </fieldset>
+</form>

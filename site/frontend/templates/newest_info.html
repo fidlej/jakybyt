@@ -1,0 +1,7 @@
+$def with (analyses)
+<table>
+$ lastState = None
+$for state, analysis in oddEvenDiffs(analyses, "createdDate"):
+    $:htmlAnalysisRow(analysis, onMap=True, rowClass=state, showFloor=False, ageDisplay=state != lastState)
+    $ lastState = state
+</table>

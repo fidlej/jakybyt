@@ -1,0 +1,42 @@
+$def with (dataJs1, dataJs2, max, legend)
+<h1>Počty bytů v Praze</h1>
+<p>
+Jsou zde počty <a $:htmlLinkAttrs("/histogram", fullOnly=True)>všech</a> <a href="/nastaveni?path=$ctxInfo('fullpath')">vhodných bytů</a>. Nebo pro velikosti:
+$for rooms in ["1", "2", "3", "4", "5"]:
+    <a title="Byty ${rooms}+1 a ${rooms}+kk" $:htmlLinkAttrs("/histogram?rooms=" + rooms)>${rooms}+1/kk</a>&nbsp;&nbsp;
+<br/>
+Poměrně málo bytů se prodává za rovné 2 nebo 3 milióny.
+Ceny s devítkou na konci jsou více atraktivní.
+</p>
+
+<div class="display">
+Počty bytů <b>$legend</b> podle ceny:
+<noscript><p>Diagramy vyžadují zapnutý Javascript.</p></noscript>
+<div id="chart_container1"></div>
+<div id="chart_container2"></div>
+</div>
+
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+
+<script type="text/javascript">
+//<![CDATA[
+function getDataDefinition() {
+    var data1 = $:dataJs1;
+    var data2 = $:dataJs2;
+    return {
+        visualization: "ImageBarChart",
+        neededPackages: ["imagebarchart"],
+        onLoad: function() {
+            chart.drawChart(data1, "chart_container1",
+                {max: $max, width: 600, height:400,
+                colors: ["#33BBCC", "#3366CC"]});
+            chart.drawChart(data2, "chart_container2",
+                {max: $max, width: 600, height:400,
+                colors: ["#33BBCC", "#3366CC"]});
+        }
+    };
+}
+//]]>
+</script>
+<script type="text/javascript" src="/static/js/chart.js"></script>
+
